@@ -22,7 +22,7 @@ function CourseRoutes(app) {
     Database.courses = Database.courses.map((c) =>
       c._id === id ? { c, ...course } : c
     );
-    res.sendStatus(204);
+    res.send(course);
   });
   app.get("/api/courses/:id", (req, res) => {
     const { id } = req.params;
