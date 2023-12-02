@@ -17,7 +17,7 @@ app.use(express.json())
 app.use(
   cors({
     credentials: true,
-    origin: process.env.FRONTEND_URL
+    origin: 'https://spiffy-fenglisu-38a953.netlify.app/'
   })
 );
 
