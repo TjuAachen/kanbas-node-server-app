@@ -47,7 +47,14 @@ function UserRoutes(app) {
     res.json(200);
    };
   const account = async (req, res) => {
-    res.json(req.session['currentUser']);
+    try {
+      res.setHeader('Content-Type', 'application/json');
+      res.json(req.session['currentUser']);
+    } catch (error) {
+      res.status(500).send({ error: 'Internal Server Error' });
+      // Log the error for debugging
+      console.error('Error sending JSON response:', error);
+    }
   };
   app.post("/api/users", createUser);
   app.get("/api/users", findAllUsers);
